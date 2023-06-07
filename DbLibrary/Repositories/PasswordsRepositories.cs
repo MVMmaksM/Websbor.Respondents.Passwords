@@ -13,11 +13,11 @@ namespace DbLibrary.Repositories
     public class PasswordsRepositories
     {
         private static string sqlStoredProcedure = "sp_Insert_Passwords @name @okpo @password @date_create @comment";
-        public List<Passwords> GetAll()
+        public async Task<List<Passwords>> GetAll()
         {
             using (var dbContext = new DbContext())
             {
-                return dbContext.Passwords.ToList();
+                return await dbContext.Passwords.ToListAsync();
             }
         }
 
@@ -53,7 +53,7 @@ namespace DbLibrary.Repositories
             }
         }
 
-        public async Task<int> Update(Passwords dataRespondentUpdate) 
+        public async Task<int> Update(Passwords dataRespondentUpdate)
         {
             using (var dbContext = new DbContext())
             {
@@ -62,7 +62,7 @@ namespace DbLibrary.Repositories
             }
         }
 
-        public async Task<int> Delete(Passwords dataRespondentDelete) 
+        public async Task<int> Delete(Passwords dataRespondentDelete)
         {
             using (var dbContext = new DbContext())
             {
@@ -71,7 +71,7 @@ namespace DbLibrary.Repositories
             }
         }
 
-        public void AddStoredProcedure(List<Passwords> dataLoadRespondents) 
+        public void AddStoredProcedure(List<Passwords> dataLoadRespondents)
         {
             var sqlParameters = new List<SqlParameter>();
 
@@ -115,7 +115,7 @@ namespace DbLibrary.Repositories
             }
 
             using (var dbContext = new DbContext())
-            {                            
+            {
                 dbContext.Passwords.FromSqlRaw(sqlStoredProcedure, sqlParameters);
             }
         }
