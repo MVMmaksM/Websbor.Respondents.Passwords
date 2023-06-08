@@ -26,7 +26,7 @@
                 <TextBox x:Name="TxtBxComment" Margin="514,25,0,212" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="464"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Данные из АС ГС" Margin="0,155,0,253" Foreground="#086499" BorderBrush="#9cdbff" FontWeight="Bold">
+        <GroupBox x:Name="GrpBxWebsborGs" Header="Данные из АС ГС" Margin="0,155,0,253" Foreground="#086499" BorderBrush="#9cdbff" FontWeight="Bold">
             <Grid>
                 <Label Content="Наименование" HorizontalAlignment="Left" Margin="10,13,0,0" Height="25" Width="495" VerticalAlignment="Top"/>
                 <TextBox x:Name="TxtBxNameGs"  Height="25" Margin="10,38,483,0" VerticalContentAlignment="Center" VerticalAlignment="Top"/>
@@ -48,7 +48,7 @@
                 <TextBox x:Name="TxtBxEmail" Height="25" Margin="563,147,10,0" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
-        <Button x:Name="BtnAddEdit" Height="25" Content="Сохранить" Margin="345,432,417,165" Background="#48b9fa" Foreground="WhiteSmoke" BorderBrush="#086499" FontWeight="Bold" FontFamily="Arial">
+        <Button x:Name="BtnAddEdit" Height="25" Content="Сохранить" Margin="345,432,417,165" Background="#48b9fa" Foreground="WhiteSmoke" BorderBrush="#086499" FontWeight="Bold" FontFamily="Arial" Click="BtnAddEdit_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="2"/>

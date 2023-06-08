@@ -19,9 +19,22 @@ namespace Websbor.Respondents.Passwords.View
     /// </summary>
     public partial class AddEditWindow : Window
     {
-        public AddEditWindow()
+      
+        public AddEditWindow(DbLibrary.Model.Passwords passwords)
         {
             InitializeComponent();
-        }       
+        
+            
+            TxtBxName.Text = passwords.Name;
+            TxtBxOkpo.Text = passwords.Okpo;
+            TxtBxPassword.Text = passwords.Password;
+            TxtBxDateCreate.Text = passwords.DateCreate;
+            TxtBxComment.Text = passwords.Comment;
+        }
+
+        private void BtnAddEdit_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

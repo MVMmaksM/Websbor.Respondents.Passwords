@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Websbor.Respondents.Passwords.Configurations;
+using Websbor.Respondents.Passwords.View;
 
 namespace Websbor.Respondents.Passwords
 {
@@ -30,6 +31,18 @@ namespace Websbor.Respondents.Passwords
             _facade = new Facade();
             _appSettings = _facade.Initialize();
             this.DataContext = _appSettings;
+        }
+
+        private void ButtonShowAllData_Click(object sender, RoutedEventArgs e)
+        {
+            DataGridPasswords.ItemsSource = _facade.GetAllPasswords();
+        }    
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            var addWindow = new AddEditWindow();
+            addWindow.Owner = this;
+            addWindow.GrpBxWebsborGs.Visibility = Visibility.Hidden;
+            addWindow.Show();
         }
     }
 }

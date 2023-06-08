@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Websbor.Respondents.Passwords"
         mc:Ignorable="d"
-  Title="Учетки респондентов" Height="650" Width="1000" MinWidth="620" MinHeight="420" Background="#086499" Topmost="False" WindowStartupLocation="CenterScreen" Closed="MainWindow_Closed" ResizeMode="CanResize" Loaded="MainWindow_Loaded">
+  Title="Учетки респондентов" Height="740" Width="1000" MinWidth="620" MinHeight="420" Background="#086499" Topmost="False" WindowStartupLocation="CenterScreen" Closed="MainWindow_Closed" ResizeMode="CanResize" Loaded="MainWindow_Loaded">
     <Window.Resources>
         <ControlTemplate x:Key="{x:Static MenuItem.TopLevelHeaderTemplateKey}" TargetType="{x:Type MenuItem}">
             <Border Name="Border" >
@@ -56,7 +56,7 @@
         <TabControl Margin="0,24,0,25" Grid.ColumnSpan="2">
             <TabItem Header="Пароли">
                 <Grid Background="#086499">
-                    <DataGrid x:Name="dgDataPasswords" AutoGenerateColumns="False" Margin="0,0,0,118" Background="#ebf8ff" VerticalGridLinesBrush="#c0c1c2" HorizontalGridLinesBrush="#c0c1c2" BorderBrush="#9cdbff" LoadingRow="dgDataPasswords_LoadingRow" FontSize="14" FontFamily="Arial" BorderThickness="0,0,0,4" IsReadOnly="True">
+                    <DataGrid x:Name="DataGridPasswords" AutoGenerateColumns="False" Margin="351,0,0,118" Background="#ebf8ff" VerticalGridLinesBrush="#c0c1c2" HorizontalGridLinesBrush="#c0c1c2" BorderBrush="#9cdbff" LoadingRow="dgDataPasswords_LoadingRow" FontSize="14" FontFamily="Arial" BorderThickness="0,0,0,4" IsReadOnly="True">
                         <DataGrid.Resources>
                             <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#eb9534"/>
                         </DataGrid.Resources>
@@ -74,7 +74,7 @@
                                 <ColumnDefinition Width="141*"/>
                                 <ColumnDefinition Width="140*"/>
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="BtnAdd" Content="Добавить" VerticalAlignment="Top"  Click="ButtonUpdate_Click" Height="25" Background="#48b9fa" Margin="7,1,7,0" Foreground="WhiteSmoke" BorderBrush="#086499" FontWeight="Bold" FontFamily="Arial">
+                            <Button x:Name="BtnAdd" Content="Добавить" VerticalAlignment="Top"  Click="ButtonAdd_Click" Height="25" Background="#48b9fa" Margin="7,1,7,0" Foreground="WhiteSmoke" BorderBrush="#086499" FontWeight="Bold" FontFamily="Arial">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="2"/>
@@ -144,6 +144,26 @@
                                 </Button.Effect>
                             </Button>
                         </Grid>
+                    </GroupBox>
+                    <GroupBox Header="Данные из АС ГС" Margin="0,0,643,118" Foreground="WhiteSmoke">
+                        <StackPanel Orientation="Vertical">
+                            <Label Content="Наименование" Foreground="WhiteSmoke" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="319"/>
+                            <TextBox Margin="10,0,10,0" Height="25" VerticalContentAlignment="Center"/>
+                            <Label Content="Краткое наименование" Foreground="WhiteSmoke" Margin="10,10,10,0" Height="25" Width="316"/>
+                            <TextBox Height="25" Margin="10,0,10,0" VerticalContentAlignment="Center"/>
+                            <Label Content="ОКПО" Margin="10,10,10,0" Foreground="WhiteSmoke" Height="25"/>
+                            <TextBox Height="25" Margin="10,0,10,0" VerticalContentAlignment="Center"/>
+                            <Label Content="ОКПО ЮЛ" Margin="10,10,10,0" Foreground="WhiteSmoke" Height="25"/>
+                            <TextBox Height="25" Margin="10,0,10,0" VerticalContentAlignment="Center"/>
+                            <Label Content="Адрес" Margin="10,10,10,0" Foreground="WhiteSmoke" Height="25"/>
+                            <TextBox Height="25" Margin="10,0,10,0" VerticalContentAlignment="Center"/>
+                            <Label Content="Телефон" Margin="10,10,10,0" Foreground="WhiteSmoke" Height="25"/>
+                            <TextBox Height="25" Margin="10,0,10,0" VerticalContentAlignment="Center"/>
+                            <Label Content="Доп телефон" Margin="10,10,10,0" Foreground="WhiteSmoke" Height="25"/>
+                            <TextBox Height="25" Margin="10,0,10,0" VerticalContentAlignment="Center"/>
+                            <Label Content="Электронная почта" Margin="10,10,10,0" Foreground="WhiteSmoke" Height="25"/>
+                            <TextBox Height="25" Margin="10,0,10,0" VerticalContentAlignment="Center"/>
+                        </StackPanel>
                     </GroupBox>
                 </Grid>
             </TabItem>
