@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Websbor.Respondents.Passwords.View"
         mc:Ignorable="d"
         Title="AddEditWindow" Height="638" Width="1000">
-    <Grid Background="#ebf8ff">
+    <Grid Background="#ebf8ff" UseLayoutRounding="True">
         <Border BorderThickness="0,2,0,0" Background="#086499" BorderBrush="#48b9fa" Grid.ColumnSpan="2" Height="25" VerticalAlignment="Bottom">
             <StackPanel Margin="0,611,-576,0">
                 <StatusBar Height="23"/>
@@ -26,23 +26,37 @@
                 <TextBox x:Name="TxtBxComment" Margin="514,25,0,212" VerticalContentAlignment="Center" HorizontalAlignment="Left" Width="464"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Данные из АС ГС" Margin="0,155,0,55" Foreground="#086499" BorderBrush="#9cdbff" FontWeight="Bold">
+        <GroupBox Header="Данные из АС ГС" Margin="0,155,0,253" Foreground="#086499" BorderBrush="#9cdbff" FontWeight="Bold">
             <Grid>
-                <Label Content="Наименование" HorizontalAlignment="Left" Margin="10,10,0,354" Height="25" Width="495"/>
-                <TextBox x:Name="TxtBxNameGs"  Height="25" Margin="10,35,483,329" VerticalContentAlignment="Center"/>
-                <Label Content="Краткое наименование" HorizontalAlignment="Left" Height="25" Margin="514,10,0,354" Width="464"/>
-                <TextBox x:Name="TxtBxShortNamedGs" Height="25" Margin="514,35,10,329" Text="12345678912345" VerticalContentAlignment="Center"/>
-                <Label HorizontalAlignment="Left" Height="25" Margin="10,65,0,299" Width="139" Content="ОКПО"/>
-                <TextBox x:Name="TxtBxOkpodGs" Height="25" Margin="10,90,856,274" VerticalContentAlignment="Center"/>
-                <Label Content="ОКПО ЮЛ" Height="25" Margin="140,65,709,299"/>
-                <TextBox x:Name="TxtBxOkpoUlGs" Margin="140,90,709,274" Height="25" Text="25/12/2023" VerticalContentAlignment="Center"/>
-                <Label Content="ИНН" Height="25" Margin="285,65,620,299"/>
-                <TextBox x:Name="TxtBxInn" Height="25" Margin="285,90,620,274" Text="6670446810" VerticalContentAlignment="Center"/>
-                <Label Content="Адрес" Height="25" Margin="568,65,10,299"/>
-                <TextBox x:Name="TxtBxAddressGs" Height="25" Margin="568,90,10,274" VerticalContentAlignment="Center"/>
-                <Label Content="Телефон" Height="25" Margin="10,120,856,244"/>
-                <TextBox x:Name="TxtBxTelephone" Height="25" Margin="10,145,856,219"/>
+                <Label Content="Наименование" HorizontalAlignment="Left" Margin="10,13,0,0" Height="25" Width="495" VerticalAlignment="Top"/>
+                <TextBox x:Name="TxtBxNameGs"  Height="25" Margin="10,38,483,0" VerticalContentAlignment="Center" VerticalAlignment="Top"/>
+                <Label Content="Краткое наименование" HorizontalAlignment="Left" Height="25" Margin="510,13,0,0" Width="468" VerticalAlignment="Top"/>
+                <TextBox x:Name="TxtBxShortNamedGs" Height="25" Margin="510,38,10,0" Text="12345678912345" VerticalContentAlignment="Center" VerticalAlignment="Top"/>
+                <Label HorizontalAlignment="Left" Height="25" Margin="10,68,0,0" Width="122" Content="ОКПО" VerticalAlignment="Top"/>
+                <TextBox x:Name="TxtBxOkpodGs" Height="25" Margin="10,93,856,0" VerticalContentAlignment="Center" VerticalAlignment="Top"/>
+                <Label Content="ОКПО ЮЛ" Height="25" Margin="140,68,709,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="TxtBxOkpoUlGs" Margin="140,92,709,0" Height="25" Text="25/12/2023" VerticalContentAlignment="Center" VerticalAlignment="Top"/>
+                <Label Content="ИНН" Height="25" Margin="285,68,620,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="TxtBxInn" Height="25" Margin="285,92,620,0" Text="6670446810" VerticalContentAlignment="Center" VerticalAlignment="Top"/>
+                <Label Content="Адрес" Height="25" Margin="373,68,10,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="TxtBxAddressGs" Height="25" Margin="373,92,10,0" VerticalContentAlignment="Center" VerticalAlignment="Top"/>
+                <Label Content="Телефон" Height="25" Margin="10,122,709,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="TxtBxTelephone" Height="25" Margin="10,147,709,0" VerticalContentAlignment="Center" VerticalAlignment="Top"/>
+                <Label Content="Доп телефон" Height="25" Margin="285,122,430,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="TxtBxDopTelephone" VerticalContentAlignment="Center" Height="25" Margin="285,147,430,0" VerticalAlignment="Top"/>
+                <Label Content="Электронная почта" Height="25" Margin="563,122,10,0" VerticalAlignment="Top"/>
+                <TextBox x:Name="TxtBxEmail" Height="25" Margin="563,147,10,0" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
+        <Button x:Name="BtnAddEdit" Height="25" Content="Сохранить" Margin="345,432,417,165" Background="#48b9fa" Foreground="WhiteSmoke" BorderBrush="#086499" FontWeight="Bold" FontFamily="Arial">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="2"/>
+                </Style>
+            </Button.Resources>
+            <Button.Effect>
+                <DropShadowEffect Color="Black" Direction="290" ShadowDepth="3" Opacity="0.6"/>
+            </Button.Effect>
+        </Button>
     </Grid>
 </Window>
