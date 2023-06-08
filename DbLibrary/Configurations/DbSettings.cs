@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DbLibrary.Configurations
 {
-    public class AppSettings
+    public class DbSettings
     {
         public static string ConnectionString { get; set; }
     }

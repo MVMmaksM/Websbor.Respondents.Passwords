@@ -16,7 +16,7 @@ namespace DbLibrary.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(AppSettings.ConnectionString);
+            optionsBuilder.UseSqlServer(DbSettings.ConnectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

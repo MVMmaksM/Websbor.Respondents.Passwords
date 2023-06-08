@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Websbor.Respondents.Passwords.Configurations;
 
 namespace Websbor.Respondents.Passwords
 {
@@ -20,9 +21,15 @@ namespace Websbor.Respondents.Passwords
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Facade _facade;
+        private AppSettings _appSettings;
         public MainWindow()
         {
             InitializeComponent();
+            
+            _facade = new Facade();
+            _appSettings = _facade.Initialize();
+            this.DataContext = _appSettings;
         }
     }
 }
