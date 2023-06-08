@@ -58,7 +58,7 @@
         <TabControl Margin="0,24,0,25" Grid.ColumnSpan="2">
             <TabItem Header="Пароли">
                 <Grid Background="#086499">
-                    <DataGrid x:Name="dgDataPasswords" AutoGenerateColumns="False" Margin="0,0,0,118" Background="#ebf8ff" VerticalGridLinesBrush="#c0c1c2" HorizontalGridLinesBrush="#c0c1c2" BorderBrush="#9cdbff" LoadingRow="dgDataPasswords_LoadingRow" FontSize="14" FontFamily="Arial" BorderThickness="0,0,0,4">
+                    <DataGrid x:Name="dgDataPasswords" AutoGenerateColumns="False" Margin="0,0,0,118" Background="#ebf8ff" VerticalGridLinesBrush="#c0c1c2" HorizontalGridLinesBrush="#c0c1c2" BorderBrush="#9cdbff" LoadingRow="dgDataPasswords_LoadingRow" FontSize="14" FontFamily="Arial" BorderThickness="0,0,0,4" IsReadOnly="True">
                         <DataGrid.Resources>
                             <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#eb9534"/>
                         </DataGrid.Resources>
@@ -76,7 +76,7 @@
                                 <ColumnDefinition Width="141*"/>
                                 <ColumnDefinition Width="140*"/>
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="ButtonUpdate" Content="Обновить" VerticalAlignment="Top"  Click="ButtonUpdate_Click" Height="25" Background="#48b9fa" Margin="7,1,7,0" Foreground="WhiteSmoke" BorderBrush="#086499" FontWeight="Bold" FontFamily="Arial">
+                            <Button x:Name="BtnAdd" Content="Добавить" VerticalAlignment="Top"  Click="ButtonUpdate_Click" Height="25" Background="#48b9fa" Margin="7,1,7,0" Foreground="WhiteSmoke" BorderBrush="#086499" FontWeight="Bold" FontFamily="Arial">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="2"/>
