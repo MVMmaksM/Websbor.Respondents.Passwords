@@ -10,7 +10,7 @@ namespace DbLibrary.Model
     {
         public int Id { get; set; }
         public string NameGS { get; set; }
-        public string ShortNameGS { get; set; }
+        public string ShortNameGS { get; set; }       
         public string OkpoGS { get; set; }
         public string Inn { get; set; }
         public string OkpoUlGS { get; set; }
