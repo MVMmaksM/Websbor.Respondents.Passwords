@@ -46,9 +46,7 @@
                 <MenuItem Header="Открыть текущий log-файл" Click="MenuItemOpenLog_Click"/>
                 <MenuItem Header="Откыть папку для log-файлов" Click="MenuItemOpenDirectoryLog_Click"/>
                 <MenuItem Header="Удалить все log-файлы" Click="MenuItemDeleteAllLog_Click"/>
-            </MenuItem>
-            <MenuItem Header="Настройки" VerticalAlignment="Center" Height="23">
-            </MenuItem>
+            </MenuItem>          
         </Menu>
         <Border BorderThickness="0,2,0,0" Background="#086499" BorderBrush="#48b9fa" Grid.ColumnSpan="2" Height="25" VerticalAlignment="Bottom">
             <StackPanel Margin="0,611,-576,0">
@@ -106,7 +104,7 @@
                                     <DropShadowEffect Color="Black" Direction="290" ShadowDepth="3" Opacity="0.6"/>
                                 </Button.Effect>
                             </Button>
-                            <Button x:Name="ButtonClearDataGrid" FontFamily="Arial" Content="Очистить список" VerticalAlignment="Top" Click="ButtonClearDataGrid_Click" Height="25" Background="#48b9fa" Margin="7,32,7,0" Grid.Column="1" Foreground="WhiteSmoke" BorderBrush="#086499" FontWeight="Bold">
+                            <Button x:Name="ButtonEdit" FontFamily="Arial" Content="Редактировать" VerticalAlignment="Top" Click="ButtonEdit_Click" Height="25" Background="#48b9fa" Margin="7,32,7,0" Grid.Column="1" Foreground="WhiteSmoke" BorderBrush="#086499" FontWeight="Bold">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="2"/>
@@ -172,7 +170,7 @@
                                 <ColumnDefinition Width="141*"/>
                                 <ColumnDefinition Width="140*"/>
                             </Grid.ColumnDefinitions>
-                            <Button x:Name="BtnUpdateWebsbor" Content="Обновить" VerticalAlignment="Top"  Click="ButtonUpdate_Click" Height="25" Background="#48b9fa" Margin="7,1,7,0" Foreground="WhiteSmoke" BorderBrush="#086499" FontWeight="Bold" FontFamily="Arial">
+                            <Button x:Name="BtnAddWebsbor" Content="Добавить" VerticalAlignment="Top"  Click="ButtonAddWebsbor_Click" Height="25" Background="#48b9fa" Margin="7,1,7,0" Foreground="WhiteSmoke" BorderBrush="#086499" FontWeight="Bold" FontFamily="Arial">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="2"/>
@@ -202,7 +200,7 @@
                                     <DropShadowEffect Color="Black" Direction="290" ShadowDepth="3" Opacity="0.6"/>
                                 </Button.Effect>
                             </Button>
-                            <Button x:Name="BtnClearDataGridWebsbor" FontFamily="Arial" Content="Очистить список" VerticalAlignment="Top" Click="ButtonClearDataGrid_Click" Height="25" Background="#48b9fa" Margin="7,32,7,0" Grid.Column="1" Foreground="WhiteSmoke" BorderBrush="#086499" FontWeight="Bold">
+                            <Button x:Name="BtnEditWebsbor" FontFamily="Arial" Content="Редактировать" VerticalAlignment="Top" Click="ButtonEditWebsbor_Click" Height="25" Background="#48b9fa" Margin="7,32,7,0" Grid.Column="1" Foreground="WhiteSmoke" BorderBrush="#086499" FontWeight="Bold">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="2"/>
@@ -241,6 +239,18 @@
                                     <DropShadowEffect Color="Black" Direction="290" ShadowDepth="3" Opacity="0.6"/>
                                 </Button.Effect>
                             </Button>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Настройки">
+                <Grid Background="#ebf8ff">
+                    <GroupBox Header="БД" Margin="10,10,10,0" Height="139" VerticalAlignment="Top" FontFamily="Arial" UseLayoutRounding="True" Foreground="Black" BorderBrush="#086499" FontWeight="Bold">
+                        <Grid>
+                            <Label Content="Сервер" Height="25" Margin="10,10,895,84"/>
+                            <TextBox x:Name="TxtBxServer" Height="25" Margin="67,10,10,0" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                            <Label Content="Наименование базы" Height="25" Margin="10,46,818,46"/>
+                            <TextBox x:Name="TxtBxNameDataBase" Height="25" VerticalContentAlignment="Center" Margin="145,46,10,46"/>
                         </Grid>
                     </GroupBox>
                 </Grid>
