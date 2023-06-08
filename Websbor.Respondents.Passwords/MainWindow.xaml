@@ -63,11 +63,11 @@
                             <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#eb9534"/>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Наименование" Binding="{Binding Path=name_resp}" Width="250" />
-                            <DataGridTextColumn Header="ОКПО" Binding="{Binding Path=okpo_resp}" Width="105"/>
-                            <DataGridTextColumn Header="Пароль" Binding="{Binding Path=password_resp}" Width="120"/>
-                            <DataGridTextColumn Header="Дата создания" Binding="{Binding Path=date_create, StringFormat=\{0:dd.MM.yyyy HH:mm\}}"  Width="105" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Примечание" Binding="{Binding Path=comment}" IsReadOnly="False" Width="*"/>
+                            <DataGridTextColumn Header="Наименование" Binding="{Binding Path=Name}" Width="*"/>
+                            <DataGridTextColumn Header="ОКПО" Binding="{Binding Path=Okpo}" Width="*"/>
+                            <DataGridTextColumn Header="Пароль" Binding="{Binding Path=Password}" Width="*"/>
+                            <DataGridTextColumn Header="Дата создания" Binding="{Binding Path=DateCreate}"  Width="*"/>
+                            <DataGridTextColumn Header="Примечание" Binding="{Binding Path=Comment}" Width="*"/>
                         </DataGrid.Columns>
                     </DataGrid>
                     <GroupBox x:Name="GroupBoxRedact" Header="Редактирование" Margin="10,0,502,25" Height="86" VerticalAlignment="Bottom" FontFamily="Arial" UseLayoutRounding="True" Foreground="#FFFDFDFD" BorderBrush="#9cdbff" FontWeight="Bold">
@@ -151,16 +151,19 @@
             </TabItem>
             <TabItem Header="Каталог Web-сбора">
                 <Grid Background="#086499">
-                    <DataGrid x:Name="dgDataWebsbor" AutoGenerateColumns="False" Margin="0,0,0,118" Background="#ebf8ff" VerticalGridLinesBrush="#c0c1c2" HorizontalGridLinesBrush="#c0c1c2" BorderBrush="#9cdbff" LoadingRow="dgDataPasswords_LoadingRow" FontSize="14" FontFamily="Arial" BorderThickness="0,0,0,4">
+                    <DataGrid x:Name="dgDataWebsbor" AutoGenerateColumns="False" Margin="0,0,0,118" Background="#ebf8ff" VerticalGridLinesBrush="#c0c1c2" HorizontalGridLinesBrush="#c0c1c2" BorderBrush="#9cdbff" LoadingRow="dgDataPasswords_LoadingRow" FontSize="14" FontFamily="Arial" BorderThickness="0,0,0,4" IsReadOnly="True">
                         <DataGrid.Resources>
                             <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#eb9534"/>
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Наименование" Binding="{Binding Path=name_resp}" Width="250" />
-                            <DataGridTextColumn Header="ОКПО" Binding="{Binding Path=okpo_resp}" Width="105"/>
-                            <DataGridTextColumn Header="Пароль" Binding="{Binding Path=password_resp}" Width="120"/>
-                            <DataGridTextColumn Header="Дата создания" Binding="{Binding Path=date_create, StringFormat=\{0:dd.MM.yyyy HH:mm\}}"  Width="105" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Примечание" Binding="{Binding Path=comment}" IsReadOnly="False" Width="*"/>
+                            <DataGridTextColumn Header="Наименование" Binding="{Binding Path=NameGS}" Width="*"/>
+                            <DataGridTextColumn Header="Краткое наименование" Binding="{Binding Path=ShortNameGS}" Width="*"/>
+                            <DataGridTextColumn Header="ОКПО" Binding="{Binding Path=OkpoGS}" Width="*"/>
+                            <DataGridTextColumn Header="ОКПО ЮЛ" Binding="{Binding Path=OkpoUlGS}" Width="*"/>
+                            <DataGridTextColumn Header="Адрес" Binding="{Binding Path=AddressGS}" Width="*"/>
+                            <DataGridTextColumn Header="Телефон" Binding="{Binding Path=TelephoneGS}"  Width="*"/>
+                            <DataGridTextColumn Header="Доп телефон" Binding="{Binding Path=DopTelephoneGs}"  Width="*"/>
+                            <DataGridTextColumn Header="Электронная почта" Binding="{Binding Path=Email}" IsReadOnly="False" Width="*"/>
                         </DataGrid.Columns>
                     </DataGrid>
                     <GroupBox x:Name="GrpBxEditWebsbor" Header="Редактирование" Margin="10,0,502,25" Height="86" VerticalAlignment="Bottom" FontFamily="Arial" UseLayoutRounding="True" Foreground="#FFFDFDFD" BorderBrush="#9cdbff" FontWeight="Bold">
