@@ -66,6 +66,15 @@ namespace DbLibrary.Repositories
                 return await dbcontext.SaveChangesAsync();
             }
         }
+
+        public void AddFromList(List<WebsborGS> dataWebsborGS)
+        {
+            using (var dbcontext = new DbContext())
+            {
+                dbcontext.WebsborGS.AddRange(dataWebsborGS);
+                dbcontext.SaveChanges();
+            }
+        }
         public async Task<int> Delete(WebsborGS websborGS)
         {
             using (var dbcontext = new DbContext())

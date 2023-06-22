@@ -12,9 +12,11 @@ namespace Websbor.Respondents.Passwords.Services
     public class FileServices
     {
         private IWorkFile _workFile;
-        public FileServices(IWorkFile workFile)
+        private ILoadSaveFileWebsbor _loadSaveFileWebsbor;
+        public FileServices(IWorkFile workFile, ILoadSaveFileWebsbor loadSaveFileWebsbor)
         {
             _workFile = workFile;
+            _loadSaveFileWebsbor = loadSaveFileWebsbor;
         }
 
         public AppSettings GetSettingsFromFile(string pathFileSetting)
@@ -27,14 +29,18 @@ namespace Websbor.Respondents.Passwords.Services
 
             var appSettings = new AppSettings();
             SaveFileSetting(appSettings, pathFileSetting);
-            return appSettings; 
+            return appSettings;
         }
 
-        public void SaveFileSetting(AppSettings appSettings, string pathFileSetting) 
+        public void SaveFileSetting(AppSettings appSettings, string pathFileSetting)
         {
             var settingString = JsonConvert.SerializeObject(appSettings);
             var bytesFile = Encoding.UTF8.GetBytes(pathFileSetting);
             _workFile.SaveFile(pathFileSetting, bytesFile);
         }
+
+        public List<DbLibrary.Model.Passwords> LoadPasswordExcel(string pathFileExcel) => _loadSaveFileWebsbor.LoadPasswordExcelAsync(pathFileExcel);
+        public List<DbLibrary.Model.WebsborGS> LoadWebsborGSExcel(string pathFileExcel) => _loadSaveFileWebsbor.LoadWebsborGSExcelAsync(pathFileExcel);
+
     }
 }

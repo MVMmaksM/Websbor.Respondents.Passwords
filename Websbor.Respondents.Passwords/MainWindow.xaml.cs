@@ -14,35 +14,82 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Websbor.Respondents.Passwords.Configurations;
 using Websbor.Respondents.Passwords.View;
+using Websbor.Respondents.Passwords.ViewModel;
 
 namespace Websbor.Respondents.Passwords
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         private Facade _facade;
-        private AppSettings _appSettings;
+        private AppSettings _appSettings;      
         public MainWindow()
         {
             InitializeComponent();
-            
             _facade = new Facade();
-            _appSettings = _facade.Initialize();
-            this.DataContext = _appSettings;
+            DataContext = _facade.ViewModel;
         }
 
         private void ButtonShowAllData_Click(object sender, RoutedEventArgs e)
         {
-            DataGridPasswords.ItemsSource = _facade.GetAllPasswords();
-        }    
+            //s.Password = _facade.GetAllPasswords();
+            _facade.GetAllPasswords();
+        }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            var addWindow = new AddEditWindow();
-            addWindow.Owner = this;
-            addWindow.GrpBxWebsborGs.Visibility = Visibility.Hidden;
-            addWindow.Show();
+            //var addWindow = new AddEditWindow();
+            //addWindow.Owner = this;
+            //addWindow.GrpBxWebsborGs.Visibility = Visibility.Hidden;
+            //addWindow.Show();
         }
+
+        private void MainWindow_Closed(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItemLoadWebSbor_Click(object sender, RoutedEventArgs e)
+        {
+            _facade.LoadWebsborGS();
+        }
+
+        private void MenuItemSaveCurrentRows_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItemShemaEcxel_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void dgDataPasswords_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            e.Row.Header = e.Row.GetIndex() + 1;
+        }
+
+        private void TxtBoxSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void ButtonSearch_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(_facade.ViewModel.SelectedPassword.ToString());
+        }
+
+        private void MenuItemLoadPasswords_Click(object sender, RoutedEventArgs e)
+        {
+            _facade.LoadPassword();
+        }
+
+        private void MenuItemDeletePassword_Click(object sender, RoutedEventArgs e)
+        {
+            _facade.DeletePasswordTable();
+        }      
     }
 }
