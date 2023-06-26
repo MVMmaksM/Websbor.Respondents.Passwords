@@ -11,30 +11,29 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Websbor.Respondents.Passwords.ViewModel;
 
 namespace Websbor.Respondents.Passwords.View
-{
-    /// <summary>
-    /// Логика взаимодействия для AddEditWindow.xaml
-    /// </summary>
-    public partial class AddEditWindow : Window
+{  
+    public partial class AddWindow : Window
     {
       
-        public AddEditWindow(DbLibrary.Model.Passwords passwords)
+        private AddPassordViewModel _addPassordViewModel;
+        public AddWindow(AddPassordViewModel addPassordViewModel)
         {
             InitializeComponent();
-        
-            
-            TxtBxName.Text = passwords.Name;
-            TxtBxOkpo.Text = passwords.Okpo;
-            TxtBxPassword.Text = passwords.Password;
-            TxtBxDateCreate.Text = passwords.DateCreate;
-            TxtBxComment.Text = passwords.Comment;
+            _addPassordViewModel = addPassordViewModel;
+            this.DataContext = _addPassordViewModel;            
         }
 
         private void BtnAddEdit_Click(object sender, RoutedEventArgs e)
         {
             
+        }      
+
+        private void TxtBxOkpo_LostFocus(object sender, RoutedEventArgs e)
+        {
+            _addPassordViewModel.GetWebsborGS();
         }
     }
 }

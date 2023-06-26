@@ -19,11 +19,11 @@ namespace DbLibrary.Repositories
                 return dbcontext.WebsborGS.FirstOrDefault(w => w.Id.Equals(id));
             }
         }
-        public List<WebsborGS> GetByOkpo(string okpo)
+        public WebsborGS GetByOkpo(string okpo)
         {
             using (var dbcontext = new DbContext())
             {
-                return dbcontext.WebsborGS.Where(w => w.OkpoGS.Equals(okpo)).ToList();
+                return dbcontext.WebsborGS.FirstOrDefault(w => w.OkpoGS.Equals(okpo));
             }
         }
 

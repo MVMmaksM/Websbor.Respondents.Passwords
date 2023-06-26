@@ -36,10 +36,10 @@ namespace Websbor.Respondents.Passwords
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            //var addWindow = new AddEditWindow();
-            //addWindow.Owner = this;
-            //addWindow.GrpBxWebsborGs.Visibility = Visibility.Hidden;
-            //addWindow.Show();
+            var viewModelAdd = new AddPassordViewModel();         
+            var addWindow = new AddWindow(viewModelAdd);
+            addWindow.Owner = this;           
+            addWindow.Show();
         }
 
         private void MainWindow_Closed(object sender, EventArgs e)
