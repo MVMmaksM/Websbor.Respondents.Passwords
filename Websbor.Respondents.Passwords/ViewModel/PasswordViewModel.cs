@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Websbor.Respondents.Passwords.ViewModel
 {
@@ -14,14 +15,42 @@ namespace Websbor.Respondents.Passwords.ViewModel
     {
         private WebsborGSRepositories _websborGSRepositories = new WebsborGSRepositories();
         private object _selectedPassword;
-        private BindingList<DbLibrary.Model.Passwords> _passwords = new BindingList<DbLibrary.Model.Passwords>();
-        public BindingList<DbLibrary.Model.Passwords> Password
+        private ObservableCollection<DbLibrary.Model.Passwords> _passwords = new ObservableCollection<DbLibrary.Model.Passwords>();
+        private DbLibrary.Model.Passwords _selectedPasswordEdit;
+
+
+        public DbLibrary.Model.Passwords SelectedPasswordEdit
+        {            
+            get { return _selectedPasswordEdit; }
+            set
+            {
+                try
+                {
+                    _selectedPasswordEdit = value;
+                    OnPropertyChanged("SelectedPasswordEdit");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message + ex.StackTrace);
+                }
+            }
+        }
+
+        public ObservableCollection<DbLibrary.Model.Passwords> Password
         {
             get { return _passwords; }
             set
             {
-                _passwords = value;
-                OnPropertyChanged("Password");
+
+                try
+                {
+                    _passwords = value;
+                    OnPropertyChanged("Password");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message + ex.StackTrace);
+                }
             }
         }
 
@@ -30,8 +59,16 @@ namespace Websbor.Respondents.Passwords.ViewModel
             get { return _selectedPassword; }
             set
             {
-                _selectedPassword = _websborGSRepositories.GetByOkpo(((DbLibrary.Model.Passwords)value).Okpo);
-                OnPropertyChanged("SelectedPassword");
+                try
+                {
+                    _selectedPassword = _websborGSRepositories.GetByOkpo(((DbLibrary.Model.Passwords)value)?.Okpo);
+                    SelectedPasswordEdit = (DbLibrary.Model.Passwords)value;
+                    OnPropertyChanged("SelectedPassword");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message + ex.StackTrace);
+                }
             }
         }
 

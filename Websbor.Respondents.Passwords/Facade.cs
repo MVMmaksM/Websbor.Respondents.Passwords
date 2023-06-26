@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Websbor.Respondents.Passwords.Configurations;
 using Websbor.Respondents.Passwords.Services;
+using Websbor.Respondents.Passwords.View;
 using Websbor.Respondents.Passwords.ViewModel;
 
 namespace Websbor.Respondents.Passwords
@@ -24,14 +25,15 @@ namespace Websbor.Respondents.Passwords
         private AppSettings _appSettings;
         private PasswordsRepositories _passwordsRepositories;
         private WebsborGSRepositories _websborRepositories;
-        private PasswordViewModel _viewModel;
-        public PasswordViewModel ViewModel { get; }
+        public PasswordViewModel PasswordViewModel { get; }
+        public WebsborGSViewModel WebsborGSViewModel { get; }
         public Facade()
         {
             _fileServices = new FileServices(new WorkFile(), new WorkExcelFile());
             _passwordsRepositories = new PasswordsRepositories();
             _websborRepositories = new WebsborGSRepositories();
-            ViewModel = new PasswordViewModel();
+            PasswordViewModel = new PasswordViewModel();
+            WebsborGSViewModel = new WebsborGSViewModel();
         }
 
         public AppSettings Initialize()
@@ -43,7 +45,11 @@ namespace Websbor.Respondents.Passwords
 
         public void GetAllPasswords()
         {
-            ViewModel.Password = new BindingList<DbLibrary.Model.Passwords>(_passwordsRepositories.GetAll());
+            Task.Run(() => PasswordViewModel.Password = new ObservableCollection<DbLibrary.Model.Passwords>(_passwordsRepositories.GetAll()));
+        }
+        public void GetAllWebsborGS()
+        {
+            Task.Run(() => WebsborGSViewModel.WebsborGS = new ObservableCollection<WebsborGS>(_websborRepositories.GetAll()));
         }
 
         public int AddPassword(DbLibrary.Model.Passwords dataPassword)
@@ -84,7 +90,6 @@ namespace Websbor.Respondents.Passwords
 
         public void LoadWebsborGS()
         {
-
             var pathFile = FileDialog.ShowOpenFileDialog();
 
             if (!string.IsNullOrWhiteSpace(pathFile))
@@ -107,11 +112,23 @@ namespace Websbor.Respondents.Passwords
 
 
         }
-
-
         public void DeletePasswordTable()
         {
             _passwordsRepositories.DeleteTable();
+        }
+
+        public void CreateAddPasswordWindow(MainWindow mainWindow) 
+        {
+            var addWindow = new AddWindow();
+            addWindow.Owner = mainWindow;
+            addWindow.Show();
+        }
+
+        public void CreateEditPasswordWindow(MainWindow mainWindow) 
+        {
+            var addWindow = new EditPasswordWindow(PasswordViewModel);
+            addWindow.Owner = mainWindow;
+            addWindow.Show();
         }
     }
 }

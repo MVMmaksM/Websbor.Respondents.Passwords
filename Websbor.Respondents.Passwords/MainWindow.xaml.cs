@@ -21,25 +21,37 @@ namespace Websbor.Respondents.Passwords
     public partial class MainWindow : Window
     {
         private Facade _facade;
-        private AppSettings _appSettings;      
+        private AppSettings _appSettings;
         public MainWindow()
         {
-            InitializeComponent();
-            _facade = new Facade();
-            DataContext = _facade.ViewModel;
+            try
+            {
+                InitializeComponent();
+                _facade = new Facade();
+                TabItemPasswords.DataContext = _facade.PasswordViewModel;
+                TabItemWebsborGS.DataContext = _facade.WebsborGSViewModel;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
         }
 
         private void ButtonShowAllData_Click(object sender, RoutedEventArgs e)
         {
-            //s.Password = _facade.GetAllPasswords();
-            _facade.GetAllPasswords();
+            if (TabItemPasswords.IsSelected)
+            {
+                _facade.GetAllPasswords();
+            }
+
+            if (TabItemWebsborGS.IsSelected)
+            {
+                _facade.GetAllWebsborGS();
+            }           
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            var viewModelAdd = new AddPassordViewModel();         
-            var addWindow = new AddWindow(viewModelAdd);
-            addWindow.Owner = this;           
-            addWindow.Show();
+            _facade.CreateAddPasswordWindow(this);
         }
 
         private void MainWindow_Closed(object sender, EventArgs e)
@@ -79,7 +91,7 @@ namespace Websbor.Respondents.Passwords
 
         private void ButtonSearch_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(_facade.ViewModel.SelectedPassword.ToString());
+            MessageBox.Show(_facade.PasswordViewModel.SelectedPassword.ToString());
         }
 
         private void MenuItemLoadPasswords_Click(object sender, RoutedEventArgs e)
@@ -90,6 +102,24 @@ namespace Websbor.Respondents.Passwords
         private void MenuItemDeletePassword_Click(object sender, RoutedEventArgs e)
         {
             _facade.DeletePasswordTable();
-        }      
+        }
+
+        private void BtnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            if (TabItemPasswords.IsSelected)
+            {
+                _facade.CreateEditPasswordWindow(this);
+            }
+
+            if (TabItemWebsborGS.IsSelected)
+            {
+               
+            }
+        }
+
+        private void MenuItemCopy_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

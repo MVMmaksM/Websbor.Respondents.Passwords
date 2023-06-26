@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Websbor.Respondents.Passwords" xmlns:viewmodel="clr-namespace:Websbor.Respondents.Passwords.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:PasswordViewModel}"
+        xmlns:local="clr-namespace:Websbor.Respondents.Passwords"
         mc:Ignorable="d"
   Title="Учетки респондентов" Height="800" Width="1000" MinWidth="620" MinHeight="420" Background="#086499" Topmost="False" WindowStartupLocation="CenterScreen" Closed="MainWindow_Closed" ResizeMode="CanResize" Loaded="MainWindow_Loaded">
     <Window.Resources>
@@ -55,16 +55,16 @@
             </StackPanel>
         </Border>
         <TabControl Margin="0,24,0,25" Grid.ColumnSpan="2">
-            <TabItem Header="Пароли">
+            <TabItem Header="Пароли" Name="TabItemPasswords">
                 <Grid Background="#086499">
-                    <DataGrid x:Name="DataGridPasswords" ItemsSource="{Binding Password, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedPassword}"  AutoGenerateColumns="False" Margin="351,0,0,118" Background="#ebf8ff" VerticalGridLinesBrush="#c0c1c2" HorizontalGridLinesBrush="#c0c1c2" BorderBrush="#9cdbff" LoadingRow="dgDataPasswords_LoadingRow" FontSize="14" FontFamily="Arial" BorderThickness="0,0,0,4">
+                    <DataGrid CanUserSortColumns="True" x:Name="DataGridPasswords" ItemsSource="{Binding Password, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedPassword}"  AutoGenerateColumns="False" Margin="351,0,0,118" Background="#ebf8ff" VerticalGridLinesBrush="#c0c1c2" HorizontalGridLinesBrush="#c0c1c2" BorderBrush="#9cdbff" LoadingRow="dgDataPasswords_LoadingRow" FontSize="14" FontFamily="Arial" BorderThickness="0,0,0,4">
                         <DataGrid.Resources>
-                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#eb9534"/>
+                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#eb9534"/>                          
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Наименование" Binding="{Binding Path=Name}" Width="*" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Наименование" CanUserSort="True" Binding="{Binding Path=Name}" Width="*" IsReadOnly="True"/>
                             <DataGridTextColumn Header="ОКПО" Binding="{Binding Path=Okpo}" Width="*" IsReadOnly="True"/>
-                            <DataGridTextColumn Header="Пароль" Binding="{Binding Path=Password}" Width="*" IsReadOnly="True"/>
+                            <DataGridTextColumn Header="Пароль" Binding="{Binding Path=Password}" Width="*"/>
                             <DataGridTextColumn Header="Дата создания" Binding="{Binding Path=DateCreate}"  Width="*" IsReadOnly="True"/>
                             <DataGridTextColumn Header="Примечание" Binding="{Binding Path=Comment}" Width="*" IsReadOnly="True"/>
                         </DataGrid.Columns>
@@ -105,7 +105,7 @@
                                     <DropShadowEffect Color="Black" Direction="290" ShadowDepth="3" Opacity="0.6"/>
                                 </Button.Effect>
                             </Button>
-                            <Button x:Name="ButtonEdit" FontFamily="Arial" Content="Редактировать" VerticalAlignment="Top" Height="25" Background="#48b9fa" Margin="7,32,7,0" Grid.Column="1" Foreground="WhiteSmoke" BorderBrush="#086499" FontWeight="Bold">
+                            <Button x:Name="ButtonEdit" FontFamily="Arial" Click="BtnEdit_Click" Content="Редактировать" VerticalAlignment="Top" Height="25" Background="#48b9fa" Margin="7,32,7,0" Grid.Column="1" Foreground="WhiteSmoke" BorderBrush="#086499" FontWeight="Bold">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="2"/>
@@ -149,30 +149,30 @@
                     <GroupBox Header="Данные из АС ГС" Margin="0,0,643,118" Foreground="WhiteSmoke">
                         <StackPanel x:Name="Stack"  Orientation="Vertical" DataContext="{Binding SelectedPassword}">
                             <Label Content="Наименование" Foreground="WhiteSmoke" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="319"/>
-                            <TextBox Margin="10,0,10,0" Height="25" VerticalContentAlignment="Center" Text="{Binding Path=NameGS, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Margin="10,0,10,0" IsReadOnly="True" Height="25" VerticalContentAlignment="Center" Text="{Binding Path=NameGS, UpdateSourceTrigger=PropertyChanged}"/>
                             <Label Content="Краткое наименование" Foreground="WhiteSmoke" Margin="10,10,10,0" Height="25" Width="316"/>
-                            <TextBox Height="25" Margin="10,0,10,0" VerticalContentAlignment="Center" Text="{Binding Path=ShortNameGS, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Height="25" IsReadOnly="True" Margin="10,0,10,0" VerticalContentAlignment="Center" Text="{Binding Path=ShortNameGS, UpdateSourceTrigger=PropertyChanged}"/>
                             <Label Content="ОКПО" Margin="10,10,10,0" Foreground="WhiteSmoke" Height="25"/>
-                            <TextBox Height="25" Margin="10,0,10,0" VerticalContentAlignment="Center" Text="{Binding Path=OkpoGS, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Height="25" IsReadOnly="True" Margin="10,0,10,0" VerticalContentAlignment="Center" Text="{Binding Path=OkpoGS, UpdateSourceTrigger=PropertyChanged}"/>
                             <Label Content="ОКПО ЮЛ" Margin="10,10,10,0" Foreground="WhiteSmoke" Height="25"/>
-                            <TextBox Height="25" Margin="10,0,10,0" VerticalContentAlignment="Center" Text="{Binding Path=OkpoUlGS, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Height="25" IsReadOnly="True" Margin="10,0,10,0" VerticalContentAlignment="Center" Text="{Binding Path=OkpoUlGS, UpdateSourceTrigger=PropertyChanged}"/>
                             <Label Content="ИНН" Margin="10,10,10,0" Foreground="WhiteSmoke" Height="25"/>
-                            <TextBox Height="25" Margin="10,0,10,0" VerticalContentAlignment="Center" Text="{Binding Path=Inn, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Height="25" IsReadOnly="True" Margin="10,0,10,0" VerticalContentAlignment="Center" Text="{Binding Path=Inn, UpdateSourceTrigger=PropertyChanged}"/>
                             <Label Content="Адрес" Margin="10,10,10,0" Foreground="WhiteSmoke" Height="25"/>
-                            <TextBox Height="25" Margin="10,0,10,0" VerticalContentAlignment="Center" Text="{Binding Path=AddressGS, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Height="25" IsReadOnly="True" Margin="10,0,10,0" VerticalContentAlignment="Center" Text="{Binding Path=AddressGS, UpdateSourceTrigger=PropertyChanged}"/>
                             <Label Content="Телефон" Margin="10,10,10,0" Foreground="WhiteSmoke" Height="25"/>
-                            <TextBox Height="25" Margin="10,0,10,0" VerticalContentAlignment="Center" Text="{Binding Path=TelephoneGS, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Height="25" IsReadOnly="True" Margin="10,0,10,0" VerticalContentAlignment="Center" Text="{Binding Path=TelephoneGS, UpdateSourceTrigger=PropertyChanged}"/>
                             <Label Content="Доп телефон" Margin="10,10,10,0" Foreground="WhiteSmoke" Height="25"/>
-                            <TextBox Height="25" Margin="10,0,10,0" VerticalContentAlignment="Center" Text="{Binding Path=DopTelephoneGs, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Height="25" IsReadOnly="True" Margin="10,0,10,0" VerticalContentAlignment="Center" Text="{Binding Path=DopTelephoneGs, UpdateSourceTrigger=PropertyChanged}"/>
                             <Label Content="Электронная почта" Margin="10,10,10,0" Foreground="WhiteSmoke" Height="25"/>
-                            <TextBox Height="25" Margin="10,0,10,0" VerticalContentAlignment="Center" Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox Height="25" IsReadOnly="True" Margin="10,0,10,0" VerticalContentAlignment="Center" Text="{Binding Path=Email, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
                     </GroupBox>
                 </Grid>
             </TabItem>
-            <TabItem Header="Каталог Web-сбора">
+            <TabItem Header="Каталог Web-сбора" Name="TabItemWebsborGS">
                 <Grid Background="#086499">
-                    <DataGrid x:Name="dgDataWebsbor" AutoGenerateColumns="False" Margin="0,0,0,118" Background="#ebf8ff" VerticalGridLinesBrush="#c0c1c2" HorizontalGridLinesBrush="#c0c1c2" BorderBrush="#9cdbff" LoadingRow="dgDataPasswords_LoadingRow" FontSize="14" FontFamily="Arial" BorderThickness="0,0,0,4" IsReadOnly="True">
+                    <DataGrid x:Name="dgDataWebsbor" ItemsSource="{Binding WebsborGS}" AutoGenerateColumns="False" Margin="0,0,0,118" Background="#ebf8ff" VerticalGridLinesBrush="#c0c1c2" HorizontalGridLinesBrush="#c0c1c2" BorderBrush="#9cdbff" LoadingRow="dgDataPasswords_LoadingRow" FontSize="14" FontFamily="Arial" BorderThickness="0,0,0,4" IsReadOnly="True">
                         <DataGrid.Resources>
                             <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="#eb9534"/>
                         </DataGrid.Resources>
@@ -271,7 +271,7 @@
                     <GroupBox Header="БД" Margin="10,10,10,0" Height="139" VerticalAlignment="Top" FontFamily="Arial" UseLayoutRounding="True" Foreground="Black" BorderBrush="#086499" FontWeight="Bold">
                         <Grid>
                             <Label Content="Сервер" Height="25" Margin="10,10,895,84"/>
-                            <TextBox x:Name="TxtBxServer" Text="{Binding Path=Server}" Height="25" Margin="67,10,10,0" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
+                            <TextBox x:Name="TxtBxServer" Text="{Binding Path=Server}" Height="25" Margin="145,10,10,0" VerticalAlignment="Top" VerticalContentAlignment="Center"/>
                             <Label Content="Наименование базы" Height="25" Margin="10,46,818,46"/>
                             <TextBox x:Name="TxtBxNameDataBase" Text="{Binding Path=DatabaseName}" Height="25" VerticalContentAlignment="Center" Margin="145,46,10,46"/>
                         </Grid>

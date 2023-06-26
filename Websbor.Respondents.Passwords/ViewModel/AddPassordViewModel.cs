@@ -37,7 +37,7 @@ namespace Websbor.Respondents.Passwords.ViewModel
 
         public void GetWebsborGS() 
         {
-            WebsborGS = _websborGSRepositories.GetByOkpo(Password.Okpo);
+           Task.Run(() => WebsborGS = _websborGSRepositories.GetByOkpo(Password.Okpo));
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DbLibrary.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,19 +17,28 @@ using Websbor.Respondents.Passwords.ViewModel;
 namespace Websbor.Respondents.Passwords.View
 {  
     public partial class AddWindow : Window
-    {
-      
+    {      
         private AddPassordViewModel _addPassordViewModel;
-        public AddWindow(AddPassordViewModel addPassordViewModel)
+        private PasswordsRepositories _repositoryPassword;
+        public AddWindow()
         {
             InitializeComponent();
-            _addPassordViewModel = addPassordViewModel;
+            _addPassordViewModel = new AddPassordViewModel();
+            _addPassordViewModel.Password.DateCreate = DateTime.Now.ToShortDateString();
+            _repositoryPassword = new PasswordsRepositories();
             this.DataContext = _addPassordViewModel;            
         }
 
-        private void BtnAddEdit_Click(object sender, RoutedEventArgs e)
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            
+            try
+            {
+                _repositoryPassword.AddAsync(_addPassordViewModel.Password);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }      
 
         private void TxtBxOkpo_LostFocus(object sender, RoutedEventArgs e)
